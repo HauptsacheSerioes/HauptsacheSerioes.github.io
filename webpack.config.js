@@ -11,6 +11,13 @@ const config = Object.assign({}, baseConfig, {
     port: 3333
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __DEV__: true,
+      __PRODUCTION__: false,
+      'process.env': {
+        NODE_ENV: JSON.stringify('development')
+      }
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]

@@ -10,11 +10,18 @@ const paths = [
 
 const config = Object.assign({}, baseConfig, {
   output: {
-    filename: 'index.js',
+    filename: 'bundle.js',
     path: 'dist',
     libraryTarget: 'umd'
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __DEV__: false,
+      __PRODUCTION__: true,
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
