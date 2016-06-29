@@ -5,7 +5,7 @@ const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin'
 
 const paths = [
   '/',
-  '/impressum/'
+  '/impressum'
 ];
 
 const config = Object.assign({}, baseConfig, {

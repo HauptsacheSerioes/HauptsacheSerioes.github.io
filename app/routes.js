@@ -6,9 +6,8 @@ import Impress from './container/impress.js';
 
 const routes = (
   <Router>
-    <Route path="/" component={Main} >
-      <Route path="/impressum" component={Impress} />
-    </Route>
+    <Route path="/" component={Main} />
+    <Route path="/impressum" component={Impress} />
   </Router>
 );
 
