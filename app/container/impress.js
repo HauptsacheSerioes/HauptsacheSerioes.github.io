@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { Row, Col } from 'react-bootstrap';
 
 
 class Impress extends React.Component {
@@ -9,17 +10,17 @@ class Impress extends React.Component {
 
   render() {
     return (
-      <div className="container impress">
-        <div className="row">
-          <div className="col-xs-12">
+      <div id="impress" className="container">
+        <Row>
+          <Col xs={12}>
             <br />
             <br />
             <br />
             <Link to="/">Main</Link>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-xs-12">
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12}>
             <br />
             <h4>Verantwortlich für Inhalt</h4>
             <br />
@@ -30,9 +31,7 @@ class Impress extends React.Component {
                 10999 Berlin<br />
               </p>
             </address>
-
             <br /><br />
-
             <h4>Haftungsausschluss</h4>
             <br />
             <h5>Haftung für Inhalte</h5>
@@ -45,8 +44,8 @@ class Impress extends React.Component {
               Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
             </p>
             <br />
-          </div>
-        </div>
+          </Col>
+        </Row>
       </div>
     );
   }
