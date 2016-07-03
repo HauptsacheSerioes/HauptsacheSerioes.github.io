@@ -38,20 +38,17 @@ h1 {
   overflow: hidden;
   z-index: -1;
 
-  svg {
-    line {
-      .transition(all 2.2s ease-in-out);
-    }
-  }
-
   .blau,
   .schwarz {
-    svg,
-    img {
+    svg {
       .position(absolute, 0, 0, 0, 0);
       width: 65vw;
       height: 65vw;
       margin: auto;
+
+      line {
+        .transition(all 2.2s ease-in-out);
+      }
     }
   }
 }
@@ -62,35 +59,6 @@ h1 {
 
   img {
     width: 100%;
-  }
-}
-
-
-.popover {
-  border: none;
-  box-shadow: none;
-  background-color: transparent;
-  width: auto;
-
-  .arrow {
-    display: none;
-  }
-
-  img {
-    width: 50vw;
-    height: auto;
-
-    @media (min-width: 768px) {
-      width: 40vw;
-    }
-
-    @media (min-width: 992px) {
-      width: 30vw;
-    }
-
-    @media (min-width: 1200px) {
-      width: 20vw;
-    }
   }
 }
 
@@ -136,7 +104,7 @@ h1 {
   }
 }
 
-.impress {
+#impress {
   font-family: "Times", "Times New Roman";
 }
 
@@ -145,6 +113,7 @@ footer {
   background-color: #FFF;
   color: #000;
   position: relative;
+  width: 100%;
 
   .links {
     background-color: #FFF;
