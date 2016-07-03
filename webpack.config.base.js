@@ -44,9 +44,6 @@ module.exports = {
           path.join(__dirname, 'app/')
         ],
         exclude: /(node_modules|bower_components|dist)/
-        // query: {
-        //   presets: ['es2015', 'stage-3', 'stage-2', 'stage-1', 'react']
-        // }
       }
     ]
   },
