@@ -42,12 +42,27 @@ h1 {
   .schwarz {
     svg {
       .position(absolute, 0, 0, 0, 0);
-      width: 65vw;
-      height: 65vw;
+      width: 95vw;
+      height: 95vw;
       margin: auto;
 
       line {
         .transition(all 2.2s ease-in-out);
+      }
+
+      @media (min-width: 768px) {
+        width: 85vw;
+        height: 85vw;
+      }
+
+      @media (min-width: 992px) {
+        width: 65vw;
+        height: 65vw;
+      }
+
+      @media (min-width: 1200px) {
+        width: 50vw;
+        height: 50vw;
       }
     }
   }
