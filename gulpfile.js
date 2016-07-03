@@ -11,6 +11,7 @@ gulp.task('deploy', [
   'clear:dist',
   'copy:assets',
   'copy:cname',
+  'copy:readme',
   'build',
   'pushToGithub'
 ]);
@@ -33,6 +34,12 @@ gulp.task('copy:assets', ['clear:dist'], () => {
 
 gulp.task('copy:cname', ['clear:dist'], () => {
   gulp.src('./CNAME')
+  .pipe(gulp.dest('./dist/'));
+});
+
+
+gulp.task('copy:readme', ['clear:dist'], () => {
+  gulp.src('./README.md')
   .pipe(gulp.dest('./dist/'));
 });
 
