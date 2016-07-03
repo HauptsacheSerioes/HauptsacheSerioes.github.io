@@ -70,8 +70,11 @@ class Main extends React.Component {
     return (
       <div id="main" onMouseMove={this._handleMouseMove}>
         <Header ref="header" replacedSVGs={this.state.replacedSVGs} />
+        <span className="clearfix" />
         <Info />
+        <span className="clearfix" />
         <Projects projects={projects} onMobile={this._onMobile} />
+        <span className="clearfix" />
         <Footer />
       </div>
     );
