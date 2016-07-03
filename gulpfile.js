@@ -10,6 +10,7 @@ const path = require('path');
 gulp.task('deploy', [
   'clear:dist',
   'copy:assets',
+  'copy:cname',
   'build',
   'pushToGithub'
 ]);
@@ -27,6 +28,12 @@ gulp.task('clear:dist', (done) => {
 gulp.task('copy:assets', ['clear:dist'], () => {
   gulp.src('./app/assets/**/*')
   .pipe(gulp.dest('./dist/assets/'));
+});
+
+
+gulp.task('copy:cname', ['clear:dist'], () => {
+  gulp.src('./CNAME')
+  .pipe(gulp.dest('./dist/'));
 });
 
 
