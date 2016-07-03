@@ -4,7 +4,8 @@ import { Affix } from 'react-overlays';
 
 class Header extends React.Component {
   static propTypes = {
-    replacedSVGs: React.PropTypes.bool.isRequired
+    replacedSVGs: React.PropTypes.bool.isRequired,
+    onMobile: React.PropTypes.bool
   }
 
   constructor() {
@@ -69,9 +70,13 @@ class Header extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
-              <Affix offsetTop={0} offsetBottom={this._affixOffsetBottom}>
-                <h1 className="topi">Haupt<wbr />sache <br />seriös</h1>
-              </Affix>
+              {
+                this.props.onMobile ?
+                  <h1 className="topi">Haupt<wbr />sache <br />seriös</h1> :
+                  <Affix offsetTop={0} offsetBottom={this._affixOffsetBottom}>
+                    <h1 className="topi">Haupt<wbr />sache <br />seriös</h1>
+                  </Affix>
+              }
             </div>
           </div>
         </div>

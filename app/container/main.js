@@ -69,11 +69,11 @@ class Main extends React.Component {
   render() {
     return (
       <div id="main" onMouseMove={this._handleMouseMove}>
-        <Header ref="header" replacedSVGs={this.state.replacedSVGs} />
+        <Header ref="header" replacedSVGs={this.state.replacedSVGs} onMobile={this._onMobile} />
         <span className="clearfix" />
         <Info />
         <span className="clearfix" />
-        <Projects projects={projects} onMobile={this._onMobile} />
+        <Projects projects={projects} />
         <span className="clearfix" />
         <Footer />
       </div>

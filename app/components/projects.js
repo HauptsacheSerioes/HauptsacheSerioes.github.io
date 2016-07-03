@@ -4,8 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 
 class Projects extends React.Component {
   static propTypes = {
-    projects: React.PropTypes.array.isRequired,
-    onMobile: React.PropTypes.bool
+    projects: React.PropTypes.array.isRequired
   }
 
   constructor() {
