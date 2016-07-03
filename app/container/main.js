@@ -9,6 +9,10 @@ import projects from '../projects.json';
 class Main extends React.Component {
   constructor() {
     super();
+
+    this.state = {
+      replacedSVGs: false
+    };
   }
 
 
@@ -48,6 +52,7 @@ class Main extends React.Component {
         svgContainer.className = classes ? `${classes} replaced-svg` : 'replaced-svg';
 
         svgImages[i].parentNode.replaceChild(svgContainer, svgImages[i]);
+        this.setState({ replacedSVGs: true });
       })
       .then(null, err => console.log(err));
     }
@@ -64,7 +69,7 @@ class Main extends React.Component {
   render() {
     return (
       <div id="main" onMouseMove={this._handleMouseMove}>
-        <Header ref="header" />
+        <Header ref="header" replacedSVGs={this.state.replacedSVGs} />
         <Info />
         <Projects projects={projects} onMobile={this._onMobile} />
         <Footer />

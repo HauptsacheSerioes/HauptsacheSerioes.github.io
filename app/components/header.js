@@ -3,6 +3,10 @@ import { Affix } from 'react-overlays';
 
 
 class Header extends React.Component {
+  static propTypes = {
+    replacedSVGs: React.PropTypes.bool.isRequired
+  }
+
   constructor() {
     super();
 
@@ -14,32 +18,27 @@ class Header extends React.Component {
   }
 
 
-  componentDidMount() {
-    if (typeof window === 'undefined') return;
-    if (typeof document === 'undefined') return;
-
-    setTimeout(() => {
-      this._documentHeight = $(document).height();
-      this._headerHeight = $('#header').height();
-      this._blueSVG = $('.svg.blau').find('svg')[0];
-      this._blueSVGHeight = $(this._blueSVG).height();
-      this._blueSVGWidth = $(this._blueSVG).width();
-      this._blackSVG = $('.svg.schwarz').find('svg')[0];
-      this._blackSVGHeight = $(this._blackSVG).height();
-      this._blackSVGWidth = $(this._blackSVG).width();
-
-      this._initAffix();
-      this._randdomizeColor();
-    }, 300);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.replacedSVGs) {
+      this._init();
+    }
   }
 
 
-  _initAffix = () => {
-    this.setState({
-      affix: {
-        offsetBottom: (this._documentHeight - this._headerHeight + 40)
-      }
-    });
+  _init = () => {
+    if (typeof window === 'undefined') return;
+    if (typeof document === 'undefined') return;
+
+    this._documentHeight = $(document).height();
+    this._headerHeight = $('#header').height();
+    this._blueSVG = $('.svg.blau').find('svg')[0];
+    this._blueSVGHeight = $(this._blueSVG).height();
+    this._blueSVGWidth = $(this._blueSVG).width();
+    this._blackSVG = $('.svg.schwarz').find('svg')[0];
+    this._blackSVGHeight = $(this._blackSVG).height();
+    this._blackSVGWidth = $(this._blackSVG).width();
+    this._affixOffsetBottom = this._documentHeight - this._headerHeight + 40;
+    this._randdomizeColor();
   }
 
 
@@ -70,14 +69,14 @@ class Header extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col-sm-12">
-              <Affix offsetTop={0} offsetBottom={this.state.affix.offsetBottom}>
+              <Affix offsetTop={0} offsetBottom={this._affixOffsetBottom}>
                 <h1 className="topi">Haupt<wbr />sache <br />seriös</h1>
               </Affix>
             </div>
           </div>
         </div>
-        <img data-src="/assets/images/schwarz.svg" className="svg blau" alt="schwarz" />
-        <img data-src="/assets/images/schwarz.svg" className="svg schwarz" alt="schwarz" />
+        <img data-src="/assets/images/schwarz.svg" className="svg blau" alt="" />
+        <img data-src="/assets/images/schwarz.svg" className="svg schwarz" alt="" />
       </div>
     );
   }
