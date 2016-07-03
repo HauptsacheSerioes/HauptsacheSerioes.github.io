@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 
+
 class Projects extends React.Component {
   static propTypes = {
     projects: React.PropTypes.array.isRequired,
@@ -9,7 +10,6 @@ class Projects extends React.Component {
 
   constructor() {
     super();
-
     this.state = { show: null };
   }
 

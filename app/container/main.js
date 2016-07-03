@@ -15,11 +15,11 @@ class Main extends React.Component {
     };
   }
 
-
   componentDidMount() {
     this._onMobile = this._checkIfItsMobile();
     this._replaceSVGs();
   }
+
 
   _checkIfItsMobile = () => {
     /*eslint-disable*/
