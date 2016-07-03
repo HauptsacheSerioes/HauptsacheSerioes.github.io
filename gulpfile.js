@@ -15,27 +15,31 @@ gulp.task('deploy', [
 ]);
 
 
-gulp.task('clear:dist', () => {
-  exec(`rm -rf ${path.join(__dirname, 'dist/')}`);
+gulp.task('clear:dist', (done) => {
+  exec(`rm -rf ${path.join(__dirname, 'dist/')}`, (err, stdout, stderr) => {
+    if (err) throw new gutil.PluginError('child_process', err);
+    if (stderr) throw new gutil.PluginError('child_process', stderr);
+    done();
+  });
 });
 
 
-gulp.task('copy:assets', () => {
+gulp.task('copy:assets', ['clear:dist'], () => {
   gulp.src('./app/assets/**/*')
   .pipe(gulp.dest('./dist/assets/'));
 });
 
 
-gulp.task('build', (callback) => {
+gulp.task('build', ['copy:assets'], (done) => {
   webpack(webpackConfigProduction, (err, stats) => {
     if (err) throw new gutil.PluginError('webpack', err);
     gutil.log('[webpack]', stats.toString());
-    callback();
+    done();
   });
 });
 
 
-gulp.task('pushToGithub', () => {
+gulp.task('pushToGithub', ['build'], () => {
   return gulp.src('./dist/**/*')
     .pipe(ghPages({
       branch: 'master'
