@@ -1,4 +1,6 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const LessPluginCleanCSS = require('less-plugin-clean-css');
 
 module.exports = {
   entry: [
@@ -12,10 +14,6 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.(jpe?g|png|gif|svg|ico)$/i,
-        loader: 'file-loader'
-      },
-      {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader'
       },
@@ -24,20 +22,37 @@ module.exports = {
         loader: 'url-loader?limit=10000&minetype=application/font-woff'
       },
       {
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        loader: 'url-loader'
+      },
+      {
         test: /\.ejs$/,
         loader: 'ejs-loader'
       },
       {
-        loader: 'babel-loader',
+        test: /\.json/,
+        loader: 'json-loader'
+      },
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
+      },
+      {
+        loader: 'babel',
         test: /\.(js|jsx)$/,
         include: [
           path.join(__dirname, 'app/')
         ],
-        exclude: /(node_modules|bower_components|dist)/,
-        query: {
-          presets: ['es2015', 'stage-0', 'react']
-        }
+        exclude: /(node_modules|bower_components|dist)/
+        // query: {
+        //   presets: ['es2015', 'stage-3', 'stage-2', 'stage-1', 'react']
+        // }
       }
+    ]
+  },
+  lessLoader: {
+    lessPlugins: [
+      new LessPluginCleanCSS({ advanced: true })
     ]
   },
   resolve: {

@@ -1,5 +1,7 @@
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const baseConfig = require('./webpack.config.base');
+
 
 const config = Object.assign({}, baseConfig, {
   devServer: {
@@ -18,14 +20,15 @@ const config = Object.assign({}, baseConfig, {
         NODE_ENV: JSON.stringify('development')
       }
     }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
+    }),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new ExtractTextPlugin('styles.css')
   ]
-});
-
-config.module.loaders.push({
-  test: /\.less$/,
-  loader: 'style!css!less'
 });
 
 

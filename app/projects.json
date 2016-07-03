@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Martin Hanslmayr",
+    "url": "https://martinhanslmayr.de",
+    "image": "/assets/images/projects/p_mungo.png"
+  },
+  {
+    "name": "MEOW",
+    "url": "http://meow.berlin",
+    "image": "/assets/images/projects/p_meow.png"
+  },
+  {
+    "name": "Thorsten Haack",
+    "url": "https://thorsten-haack.de/",
+    "image": "/assets/images/projects/p_thorsten.png"
+  },
+  {
+    "name": "Collect Boutique",
+    "url": "http://collectboutique.de/",
+    "image": "/assets/images/projects/p_collect.png"
+  },
+  {
+    "name": "Boulderklub",
+    "url": "http://boulderklub.de/",
+    "image": "/assets/images/projects/p_bk_1.png"
+  },
+  {
+    "name": "Benjamin Friedl",
+    "url": "http://benjaminfriedl.de",
+    "image": "/assets/images/projects/p_ben.png"
+  }
+]

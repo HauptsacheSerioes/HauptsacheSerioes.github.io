@@ -8,6 +8,8 @@ import ReactDOMServer from 'react-dom/server';
 import { RouterContext, match } from 'react-router';
 import routes from './routes';
 import index from './index.ejs';
+import './styles/main.less';
+
 
 // Client render (optional):
 if (typeof document !== 'undefined') {
@@ -24,7 +26,8 @@ export default (locals, callback) => {
 
   match({ routes, location }, (error, redirectLocation, renderProps) => {
     callback(null, index({
-      title: 'hauptsache Serioes',
+      title: 'Hauptsache Seriös',
+      metaDescription: 'Hauptsache Seriös und meistens guter Dinge.',
       reactApp: ReactDOMServer.renderToString(<RouterContext {...renderProps} />)
     }));
   });

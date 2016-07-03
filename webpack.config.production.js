@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const baseConfig = require('./webpack.config.base');
-const LessPluginCleanCSS = require('less-plugin-clean-css');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 
 const paths = [
@@ -23,9 +23,13 @@ const config = Object.assign({}, baseConfig, {
       }
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.DedupePlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.ProvidePlugin({
-      _: 'underscore'
+      _: 'underscore',
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery'
     }),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
@@ -35,6 +39,7 @@ const config = Object.assign({}, baseConfig, {
         comments: false
       }
     }),
+    new ExtractTextPlugin('styles.css'),
     new StaticSiteGeneratorPlugin('main', paths, {
       // Properties here are merged into `locals`
       // passed to the exported render function
@@ -42,12 +47,5 @@ const config = Object.assign({}, baseConfig, {
   ]
 });
 
-config.module.loaders.push({
-  test: /\.less$/,
-  loader: 'style!css!less',
-  lessPlugins: [
-    new LessPluginCleanCSS({ advanced: true })
-  ]
-});
 
 module.exports = config;
