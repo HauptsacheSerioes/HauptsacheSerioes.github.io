@@ -26,25 +26,33 @@ gulp.task('clear:dist', (done) => {
 });
 
 
-gulp.task('copy:assets', ['clear:dist'], () => {
+gulp.task('copy:assets', (done) => {
   gulp.src('./app/assets/**/*')
-  .pipe(gulp.dest('./dist/assets/'));
+  .pipe(gulp.dest('./dist/assets/'))
+  .on('end', done);
 });
 
 
-gulp.task('copy:cname', ['clear:dist'], () => {
+gulp.task('copy:cname', (done) => {
   gulp.src('./CNAME')
-  .pipe(gulp.dest('./dist/'));
+  .pipe(gulp.dest('./dist/'))
+  .on('end', done);
 });
 
 
-gulp.task('copy:readme', ['clear:dist'], () => {
+gulp.task('copy:readme', (done) => {
   gulp.src('./README.md')
-  .pipe(gulp.dest('./dist/'));
+  .pipe(gulp.dest('./dist/'))
+  .on('end', done);
 });
 
 
-gulp.task('build', ['copy:assets'], (done) => {
+gulp.task('build', [
+  'clear:dist',
+  'copy:assets',
+  'copy:cname',
+  'copy:readme'
+], (done) => {
   webpack(webpackConfigProduction, (err, stats) => {
     if (err) throw new gutil.PluginError('webpack', err);
     gutil.log('[webpack]', stats.toString({
