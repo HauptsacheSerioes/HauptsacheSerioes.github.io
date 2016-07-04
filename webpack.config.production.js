@@ -40,9 +40,9 @@ const config = Object.assign({}, baseConfig, {
       }
     }),
     new ExtractTextPlugin('styles.css'),
-    new StaticSiteGeneratorPlugin('main', paths, {
-      // Properties here are merged into `locals`
-      // passed to the exported render function
+    new StaticSiteGeneratorPlugin('main', paths, {}, {
+      // scope
+      window: {}
     })
   ]
 });

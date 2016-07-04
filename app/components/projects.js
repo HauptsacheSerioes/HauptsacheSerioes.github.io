@@ -15,7 +15,7 @@ class Projects extends React.Component {
 
   _renderProjects = (projects) => {
     return projects.map((project, index) => {
-      if (typeof window !== 'undefined') {
+      if (typeof document !== 'undefined') {
         $.get(project.image).then(null, err => console.log(err)); // prefetch project images
       }
 

@@ -27,7 +27,6 @@ class Header extends React.Component {
 
 
   _init = () => {
-    if (typeof window === 'undefined') return;
     if (typeof document === 'undefined') return;
 
     this._documentHeight = $(document).height();
@@ -46,7 +45,7 @@ class Header extends React.Component {
   _randdomizeColor = () => {
     /*eslint-disable*/
     // we need to require velocity inline to support server side rendering
-    const velocity = (typeof window !== 'undefined') ? require('velocity-animate') : null;
+    const velocity = (typeof document !== 'undefined') ? require('velocity-animate') : null;
     if (!velocity) return;
     /*eslint-enable*/
     const svgLine = $(this._blackSVG).find('line');
