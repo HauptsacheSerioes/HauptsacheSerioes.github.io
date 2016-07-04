@@ -6,6 +6,7 @@ const webpackConfigProduction = require('./webpack.config.production');
 const exec = require('child_process').exec;
 const path = require('path');
 
+const date = new Date();
 
 gulp.task('deploy', [
   'clear:dist',
@@ -67,6 +68,7 @@ gulp.task('build', [
 gulp.task('pushToGithub', ['build'], () => {
   return gulp.src('./dist/**/*')
     .pipe(ghPages({
-      branch: 'master'
+      branch: 'master',
+      message: `automatically generated - ${date.toUTCString()}`
     }));
 });
