@@ -49,9 +49,14 @@ class Header extends React.Component {
     if (!velocity) return;
     /*eslint-enable*/
     const svgLine = $(this._blackSVG).find('line');
+
+    velocity(svgLine, {
+      stroke: `#${Math.floor(Math.random() * 16000000).toString(16)}`
+    });
+
     setInterval(() => {
       velocity(svgLine, {
-        stroke: `#${Math.floor(Math.random() * 16777215).toString(16)}`
+        stroke: `#${Math.floor(Math.random() * 16000000).toString(16)}`
       });
     }, 2000);
   }

@@ -38,10 +38,25 @@ h1 {
   overflow: hidden;
   z-index: -1;
 
-  .blau,
   .schwarz {
     svg {
       .position(absolute, 0, 0, 0, 0);
+    }
+  }
+
+  .blau {
+    svg {
+      .position(absolute, 10px, 0, 0, 20px);
+
+      @media (min-width: 768px) {
+        .position(absolute, 25px, 0, 0, 45px);
+      }
+    }
+  }
+
+  .blau,
+  .schwarz {
+    svg {
       width: 95vw;
       height: 95vw;
       margin: auto;
