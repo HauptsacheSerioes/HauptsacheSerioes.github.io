@@ -73,6 +73,8 @@ class Main extends React.Component {
         <span className="clearfix" />
         <Info />
         <span className="clearfix" />
+        <Projects projects={projects} />
+        <span className="clearfix" />
         <Footer />
       </div>
     );
